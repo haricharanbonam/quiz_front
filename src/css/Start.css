@@ -1,0 +1,41 @@
+.startbox {
+  height: 100vh; /* Use 100vh for full viewport height */
+  width: 100%;
+  background: linear-gradient(120deg, #cc5b5b, #cfcfcf);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.startmain {
+  height: 50%; /* Adjust height as needed */
+  width: 30%;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Center content vertically */
+  align-items: center; /* Center content horizontally */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add subtle shadow */
+  border-radius: 8px; /* Optional: Rounded corners */
+}
+
+.startin p {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: larger;
+  font-weight: bold;
+  margin-bottom: 20px; /* Add spacing below the text */
+}
+
+.startmain button {
+  background-color: #0b57d0;
+  font-weight: bold;
+  padding: 10px 20px;
+  color: #fff; /* White text */
+  border: none; /* Remove border */
+  border-radius: 4px; /* Optional: Rounded corners */
+  cursor: pointer; 
+}
+
+.startmain button:hover {
+  background-color: #0948a6; 
+}

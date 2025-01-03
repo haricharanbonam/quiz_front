@@ -1,0 +1,113 @@
+/* Styles scoped under #create */
+#create {
+  font-family: Arial, sans-serif;
+  background-color: #f9f9f9;
+  padding: 20px;
+}
+
+#create h1 {
+  text-align: center;
+  color: #333;
+  margin-top: 20px;
+}
+
+#create form {
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #ffffff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
+#create form div {
+  margin-bottom: 15px;
+}
+
+#create label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: #555;
+}
+
+#create input[type="text"],
+#create input[type="number"] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+#create input[type="text"]:focus,
+#create input[type="number"]:focus {
+  border-color: #007bff;
+  outline: none;
+  box-shadow: 0 0 4px rgba(0, 123, 255, 0.3);
+}
+
+#create button {
+  display: inline-block;
+  background-color: #007bff;
+  color: #ffffff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#create button:hover {
+  background-color: #0056b3;
+}
+
+#create button:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+/* Saved questions section */
+#create .saved-questions {
+  max-width: 600px;
+  margin: 20px auto;
+}
+
+#create .saved-questions div {
+  border: 1px solid #ddd;
+  background-color: #ffffff;
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#create .saved-questions p {
+  margin: 0 0 10px;
+  font-size: 16px;
+  color: #444;
+}
+
+#create .saved-questions ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+#create .saved-questions li {
+  font-size: 14px;
+  color: #555;
+  margin: 5px 0;
+}
+
+#create .saved-questions li strong {
+  color: #28a745;
+}
+
+/* Submit button */
+#create button[type="button"]:last-of-type {
+  display: block;
+  width: 200px;
+  margin: 20px auto;
+}
