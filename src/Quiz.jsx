@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "./css/Quiz.css";
+
 import axios from "axios";
 import Api from "./Api";
 import { useParams } from "react-router-dom";
@@ -76,31 +76,40 @@ function Quiz() {
   }
 
   return (
-    <div className="quizbox">
-      <div className="quizmain">
-        <div className="quizq">
-          <p>{index + 1 + " " + quizData[index].question}</p>
+    <div className="quizbox bg-gradient-to-br from-indigo-500 to-blue-500 h-screen w-full flex justify-center items-center">
+      <div className="quizmain bg-white w-full max-w-lg p-6 rounded-lg shadow-lg text-center">
+        <div className="quizq mb-6">
+          <p className="text-2xl font-bold text-gray-800">
+            {index + 1 + " " + quizData[index].question}
+          </p>
         </div>
-        <div className="quizoptions">
+        <div className="quizoptions flex flex-col gap-4">
           {quizData[index].options.map((e, i) => (
             <div
-              className="quiz-option"
+              className="quiz-option p-4 mb-2 border border-gray-300 rounded-md cursor-pointer relative transition-all duration-300 transform hover:scale-105"
               style={{
                 backgroundColor: option === i ? "#2575fc" : "white",
-                cursor: "pointer",
               }}
               key={i}
               onClick={() => handleOption(i)}
             >
-              <p>{`${i + 1}. ${e}`}</p>
+              <p className="text-lg">{`${i + 1}. ${e}`}</p>
             </div>
           ))}
         </div>
-        <div className="quizbuttons">
-          <button onClick={handlePrev} disabled={index === 0}>
+        <div className="quizbuttons flex justify-between items-center mt-6">
+          <button
+            onClick={handlePrev}
+            disabled={index === 0}
+            className="bg-blue-600 text-white font-semibold py-2 px-4 rounded-md disabled:bg-gray-400 transition-all duration-200 hover:bg-blue-500 active:scale-95"
+          >
             Prev
           </button>
-          <button onClick={handleNext} disabled={index === quizData.length - 1}>
+          <button
+            onClick={handleNext}
+            disabled={index === quizData.length - 1}
+            className="bg-blue-600 text-white font-semibold py-2 px-4 rounded-md disabled:bg-gray-400 transition-all duration-200 hover:bg-blue-500 active:scale-95"
+          >
             Next
           </button>
           <button
@@ -108,6 +117,7 @@ function Quiz() {
               display: index === quizData.length - 1 ? "block" : "none",
             }}
             onClick={handleSubmit}
+            className="bg-blue-600 text-white font-semibold py-2 px-4 rounded-md transition-all duration-200 hover:bg-blue-500 active:scale-95"
           >
             Submit
           </button>
