@@ -3,16 +3,16 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Api from "./Api";
 import { useParams } from "react-router-dom";
+import SubmitPopup from "./SubmitPopup";
 
 function Quiz() {
-  // Get the `id` parameter from the URL
   const { id } = useParams();
   const [quizData, setQuizData] = useState([]);
   const [index, setIndex] = useState(0);
   const [responses, setResponses] = useState([]);
   const [option, setOption] = useState(null);
+  const [showPopup, setShowPopup] = useState(false);
 
-  // Fetch quiz data
   useEffect(() => {
     const fetchQuizData = async () => {
       try {
@@ -26,7 +26,7 @@ function Quiz() {
     };
 
     fetchQuizData();
-  }, [id]); // Trigger effect when `id` changes
+  }, [id]);
 
   const handleOption = (i) => {
     console.log(`Option ${i} clicked`);
@@ -36,7 +36,9 @@ function Quiz() {
     updatedResponses[index] = i;
     setResponses(updatedResponses);
   };
-
+  const GotoQuestion = (i) => {
+    setIndex(i);
+  };
   const evaluate = () => {
     let ans = 0;
     for (let x = 0; x < quizData.length; x++) {
@@ -45,6 +47,19 @@ function Quiz() {
       }
     }
     return ans;
+  };
+
+  const handleConfirm = () => {
+    console.log("Submit confirmed");
+
+    setShowPopup(false);
+    alert("The marks are " + evaluate());
+    window.location.href = "/";
+  };
+
+  const handleCancel = () => {
+    console.log("Submit canceled");
+    setShowPopup(false);
   };
 
   const handleNext = () => {
@@ -59,7 +74,6 @@ function Quiz() {
     }
   };
 
-  // Update option only when responses[index] changes
   useEffect(() => {
     if (responses[index] !== option) {
       setOption(responses[index]);
@@ -72,7 +86,7 @@ function Quiz() {
   };
 
   if (quizData.length === 0) {
-    return <p>Loading quiz...</p>; // Render loading message until quizData is loaded
+    return <p>Loading quiz...</p>;
   }
 
   return (
@@ -116,12 +130,28 @@ function Quiz() {
             style={{
               display: index === quizData.length - 1 ? "block" : "none",
             }}
-            onClick={handleSubmit}
+            onClick={() => setShowPopup(true)}
             className="bg-blue-600 text-white font-semibold py-2 px-4 rounded-md transition-all duration-200 hover:bg-blue-500 active:scale-95"
           >
             Submit
           </button>
+          {showPopup && (
+            <SubmitPopup onConfirm={handleConfirm} onCancel={handleCancel} />
+          )}
         </div>
+      </div>
+      <div className="bg-white absolute top-2 right-5 h-auto  w-60 grid grid-cols-5 gap-2">
+        {responses.map((e, i) => (
+          <span
+            key={i}
+            onClick={() => GotoQuestion(i)}
+            className={`h-10 w-10 ${
+              e === null ? "bg-red-600" : "bg-green-600"
+            } rounded-full flex items-center justify-center cursor-pointer`}
+          >
+            {i + 1}
+          </span>
+        ))}
       </div>
     </div>
   );
